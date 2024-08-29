@@ -95,49 +95,15 @@ view: events {
           WHERE key = 'referrer_type');;
   }
 
+  dimension: ga_session_id {
+    type: number
+    sql:  (SELECT coalesce(value.int_value,cast(value.string_value as INT64))
+          FROM UNNEST(${event_params})
+          WHERE key = 'ga_session_id');;
+  }
+
  #not modified
-  dimension: app_info__firebase_app_id {
-    type: string
-    sql: ${TABLE}.app_info.firebase_app_id ;;
-    group_label: "App Info"
-    group_item_label: "Firebase App ID"
-  }
-  dimension: app_info__id {
-    type: string
-    sql: ${TABLE}.app_info.id ;;
-    group_label: "App Info"
-    group_item_label: "ID"
-  }
-  dimension: app_info__install_source {
-    type: string
-    sql: ${TABLE}.app_info.install_source ;;
-    group_label: "App Info"
-    group_item_label: "Install Source"
-  }
-  dimension: app_info__install_store {
-    type: string
-    sql: ${TABLE}.app_info.install_store ;;
-    group_label: "App Info"
-    group_item_label: "Install Store"
-  }
-  dimension: app_info__version {
-    type: string
-    sql: ${TABLE}.app_info.version ;;
-    group_label: "App Info"
-    group_item_label: "Version"
-  }
-  dimension: batch_event_index {
-    type: number
-    sql: ${TABLE}.batch_event_index ;;
-  }
-  dimension: batch_ordering_id {
-    type: number
-    sql: ${TABLE}.batch_ordering_id ;;
-  }
-  dimension: batch_page_id {
-    type: number
-    sql: ${TABLE}.batch_page_id ;;
-  }
+
   dimension: collected_traffic_source__dclid {
     type: string
     sql: ${TABLE}.collected_traffic_source.dclid ;;
@@ -234,42 +200,6 @@ view: events {
     group_label: "Device"
     group_item_label: "Category"
   }
-  dimension: device__is_limited_ad_tracking {
-    type: string
-    sql: ${TABLE}.device.is_limited_ad_tracking ;;
-    group_label: "Device"
-    group_item_label: "Is Limited Ad Tracking"
-  }
-  dimension: device__language {
-    type: string
-    sql: ${TABLE}.device.language ;;
-    group_label: "Device"
-    group_item_label: "Language"
-  }
-  dimension: device__mobile_brand_name {
-    type: string
-    sql: ${TABLE}.device.mobile_brand_name ;;
-    group_label: "Device"
-    group_item_label: "Mobile Brand Name"
-  }
-  dimension: device__mobile_marketing_name {
-    type: string
-    sql: ${TABLE}.device.mobile_marketing_name ;;
-    group_label: "Device"
-    group_item_label: "Mobile Marketing Name"
-  }
-  dimension: device__mobile_model_name {
-    type: string
-    sql: ${TABLE}.device.mobile_model_name ;;
-    group_label: "Device"
-    group_item_label: "Mobile Model Name"
-  }
-  dimension: device__mobile_os_hardware_model {
-    type: string
-    sql: ${TABLE}.device.mobile_os_hardware_model ;;
-    group_label: "Device"
-    group_item_label: "Mobile OS Hardware Model"
-  }
   dimension: device__operating_system {
     type: string
     sql: ${TABLE}.device.operating_system ;;
@@ -281,106 +211,6 @@ view: events {
     sql: ${TABLE}.device.operating_system_version ;;
     group_label: "Device"
     group_item_label: "Operating System Version"
-  }
-  dimension: device__time_zone_offset_seconds {
-    type: number
-    sql: ${TABLE}.device.time_zone_offset_seconds ;;
-    group_label: "Device"
-    group_item_label: "Time Zone Offset Seconds"
-  }
-  dimension: device__vendor_id {
-    type: string
-    sql: ${TABLE}.device.vendor_id ;;
-    group_label: "Device"
-    group_item_label: "Vendor ID"
-  }
-  dimension: device__web_info__browser {
-    type: string
-    sql: ${TABLE}.device.web_info.browser ;;
-    group_label: "Device Web Info"
-    group_item_label: "Browser"
-  }
-  dimension: device__web_info__browser_version {
-    type: string
-    sql: ${TABLE}.device.web_info.browser_version ;;
-    group_label: "Device Web Info"
-    group_item_label: "Browser Version"
-  }
-  dimension: device__web_info__hostname {
-    type: string
-    sql: ${TABLE}.device.web_info.hostname ;;
-    group_label: "Device Web Info"
-    group_item_label: "Hostname"
-  }
-  dimension: ecommerce__purchase_revenue {
-    type: number
-    sql: ${TABLE}.ecommerce.purchase_revenue ;;
-    group_label: "Ecommerce"
-    group_item_label: "Purchase Revenue"
-  }
-  dimension: ecommerce__purchase_revenue_in_usd {
-    type: number
-    sql: ${TABLE}.ecommerce.purchase_revenue_in_usd ;;
-    group_label: "Ecommerce"
-    group_item_label: "Purchase Revenue In USD"
-  }
-  dimension: ecommerce__refund_value {
-    type: number
-    sql: ${TABLE}.ecommerce.refund_value ;;
-    group_label: "Ecommerce"
-    group_item_label: "Refund Value"
-  }
-  dimension: ecommerce__refund_value_in_usd {
-    type: number
-    sql: ${TABLE}.ecommerce.refund_value_in_usd ;;
-    group_label: "Ecommerce"
-    group_item_label: "Refund Value In USD"
-  }
-  dimension: ecommerce__shipping_value {
-    type: number
-    sql: ${TABLE}.ecommerce.shipping_value ;;
-    group_label: "Ecommerce"
-    group_item_label: "Shipping Value"
-  }
-  dimension: ecommerce__shipping_value_in_usd {
-    type: number
-    sql: ${TABLE}.ecommerce.shipping_value_in_usd ;;
-    group_label: "Ecommerce"
-    group_item_label: "Shipping Value In USD"
-  }
-  dimension: ecommerce__tax_value {
-    type: number
-    sql: ${TABLE}.ecommerce.tax_value ;;
-    group_label: "Ecommerce"
-    group_item_label: "Tax Value"
-  }
-  dimension: ecommerce__tax_value_in_usd {
-    type: number
-    sql: ${TABLE}.ecommerce.tax_value_in_usd ;;
-    group_label: "Ecommerce"
-    group_item_label: "Tax Value In USD"
-  }
-  dimension: ecommerce__total_item_quantity {
-    type: number
-    sql: ${TABLE}.ecommerce.total_item_quantity ;;
-    group_label: "Ecommerce"
-    group_item_label: "Total Item Quantity"
-  }
-  dimension: ecommerce__transaction_id {
-    type: string
-    sql: ${TABLE}.ecommerce.transaction_id ;;
-    group_label: "Ecommerce"
-    group_item_label: "Transaction ID"
-  }
-  dimension: ecommerce__unique_items {
-    type: number
-    sql: ${TABLE}.ecommerce.unique_items ;;
-    group_label: "Ecommerce"
-    group_item_label: "Unique Items"
-  }
-  dimension: event_bundle_sequence_id {
-    type: number
-    sql: ${TABLE}.event_bundle_sequence_id ;;
   }
   #dimension: event_date {
   #  type: string
@@ -456,31 +286,9 @@ view: events {
     type: yesno
     sql: ${TABLE}.is_active_user ;;
   }
-  dimension: items {
-    hidden: yes
-    sql: ${TABLE}.items ;;
-  }
   dimension: platform {
     type: string
     sql: ${TABLE}.platform ;;
-  }
-  dimension: privacy_info__ads_storage {
-    type: string
-    sql: ${TABLE}.privacy_info.ads_storage ;;
-    group_label: "Privacy Info"
-    group_item_label: "Ads Storage"
-  }
-  dimension: privacy_info__analytics_storage {
-    type: string
-    sql: ${TABLE}.privacy_info.analytics_storage ;;
-    group_label: "Privacy Info"
-    group_item_label: "Analytics Storage"
-  }
-  dimension: privacy_info__uses_transient_token {
-    type: string
-    sql: ${TABLE}.privacy_info.uses_transient_token ;;
-    group_label: "Privacy Info"
-    group_item_label: "Uses Transient Token"
   }
   dimension: session_traffic_source_last_click__google_ads_campaign__account_name {
     type: string
@@ -632,11 +440,7 @@ view: events {
     fields: [
   event_name,
   traffic_source__name,
-  device__mobile_model_name,
-  device__mobile_brand_name,
-  device__web_info__hostname,
   event_dimensions__hostname,
-  device__mobile_marketing_name,
   collected_traffic_source__manual_campaign_name,
   session_traffic_source_last_click__manual_campaign__campaign_name,
   session_traffic_source_last_click__google_ads_campaign__account_name,

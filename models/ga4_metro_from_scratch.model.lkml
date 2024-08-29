@@ -15,4 +15,8 @@ explore: events {
     filters: [events.event_date: "7 days"]
   }
   sql_always_where: ${events.event_name} <> 'session_start';;
+  join: sessions_fact {
+    relationship: many_to_one
+    sql_on: ${sessions_fact.ga_session_id} = ${events.ga_session_id} ;;
+  }
 }
