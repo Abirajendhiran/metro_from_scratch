@@ -2,7 +2,7 @@
 view: sessions_fact {
   derived_table: {
     sql: select
-            (select coalesce (cast(value.string_value as INT64),value.int_value) from UNNEST(sl.event_params) where key = "ga_session_id") as ga_session_id
+            (select coalesce (cast(value.string_value as INT64),value.int_value) from UNNEST(sl.event_params) where key = "ga_session_id")||sl.user_pseudo_id as sl_key
             -- timestamp(SAFE.PARSE_DATE('%Y%m%d', '2024-08-27'))||(select value.int_value from UNNEST(sl.event_params) where key = "ga_session_id")||(select value.int_value from UNNEST(sl.event_params) where key = "ga_session_number")||sl.user_pseudo_id as sl_key
             ,  COUNT(sl.event_timestamp) session_event_count
             ,  SUM(case when sl.event_name = 'page_view' then 1
