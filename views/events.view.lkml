@@ -314,6 +314,13 @@ view: events {
              WHERE key = 'video_headline');;
   }
 
+  # Custom Metric
+
+  measure: users {
+    type: count_distinct
+    sql: ${user_pseudo_id} ;;
+  }
+
  #not modified
 
   dimension: collected_traffic_source__dclid {
