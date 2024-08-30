@@ -1,9 +1,10 @@
 
 view: sessions_fact {
   derived_table: {
+    # increment_key: "event_date" --- warning check it out
+    increment_offset: 1
     sql: select
-            (select coalesce (cast(value.string_value as INT64),value.int_value) from UNNEST(sl.event_params) where key = "ga_session_id")||sl.user_pseudo_id as sl_key
-            -- timestamp(SAFE.PARSE_DATE('%Y%m%d', '2024-08-27'))||(select value.int_value from UNNEST(sl.event_params) where key = "ga_session_id")||(select value.int_value from UNNEST(sl.event_params) where key = "ga_session_number")||sl.user_pseudo_id as sl_key
+            sl.user_pseudo_id||(select coalesce (cast(value.string_value as INT64),value.int_value) from UNNEST(sl.event_params) where key = "ga_session_id") as sl_key
             ,  COUNT(sl.event_timestamp) session_event_count
             ,  SUM(case when sl.event_name = 'page_view' then 1
                         --when sl.event_name = 'screen_view' then 1
@@ -17,6 +18,7 @@ view: sessions_fact {
                   , MIN(TIMESTAMP_MICROS(sl.event_timestamp)) as session_start
                   , (MAX(sl.event_timestamp) - MIN(sl.event_timestamp))/(60 * 1000 * 1000) AS session_length_minutes
                     from `mol-and-metro-ga.analytics_436258270.events_*` AS sl
+                  WHERE {% incrementcondition %} database_table_name.database_time_column {% endincrementcondition %}
         group by 1 ;;
   }
 
@@ -68,6 +70,18 @@ view: sessions_fact {
   dimension: session_length_minutes {
     type: number
     sql: ${TABLE}.session_length_minutes ;;
+  }
+
+  #additions for dimensions and metrics
+
+  dimension: is_bounce {
+    view_label: "Behavior"
+    group_label: "Page Filters"
+    label: "Is Bounce?"
+    description: "If this hit was the last pageview or screenview hit of a session, this is set to true."
+    type: yesno
+    sql: ${session_page_view_count} = 1 ;;
+    full_suggestions: yes
   }
 
   set: detail {

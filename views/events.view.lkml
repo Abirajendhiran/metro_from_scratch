@@ -102,6 +102,218 @@ view: events {
           WHERE key = 'ga_session_id');;
   }
 
+  # Custom dimension
+
+  dimension: article_published_date {
+    type: string
+    sql: (SELECT cast(coalesce(value.string_value,cast(value.int_value as string)) as STRING)
+             FROM UNNEST(${event_params})
+             WHERE key = 'article_published_date');;
+  }
+
+  dimension: article_tags {
+    type: string
+    sql: (SELECT cast(coalesce(value.string_value,cast(value.int_value as string)) as STRING)
+             FROM UNNEST(${event_params})
+             WHERE key = 'article_tags');;
+  }
+
+  dimension: article_title {
+    type: string
+    sql: (SELECT cast(coalesce(value.string_value,cast(value.int_value as string)) as STRING)
+             FROM UNNEST(${event_params})
+             WHERE key = 'article_title');;
+  }
+
+  dimension: author_name {
+    type: string
+    sql: (SELECT cast(coalesce(value.string_value,cast(value.int_value as string)) as STRING)
+             FROM UNNEST(${event_params})
+             WHERE key = 'author_name');;
+  }
+
+  dimension: content_type {
+    type: string
+    sql: (SELECT cast(coalesce(value.string_value,cast(value.int_value as string)) as STRING)
+             FROM UNNEST(${event_params})
+             WHERE key = 'content_type');;
+  }
+
+  dimension: ico_internal_hit {
+    type: string
+    sql: (SELECT cast(coalesce(value.string_value,cast(value.int_value as string)) as STRING)
+             FROM UNNEST(${event_params})
+             WHERE key = 'ico_internal_hit');;
+  }
+
+  dimension: ito_external_hit {
+    type: string
+    sql: (SELECT cast(coalesce(value.string_value,cast(value.int_value as string)) as STRING)
+             FROM UNNEST(${event_params})
+             WHERE key = 'ito_external_hit');;
+  }
+
+  dimension: logged_in_status {
+    type: string
+    sql: (SELECT cast(coalesce(value.string_value,cast(value.int_value as string)) as STRING)
+             FROM UNNEST(${event_params})
+             WHERE key = 'logged_in_status');;
+  }
+
+  dimension: module_name {
+    type: string
+    sql: (SELECT cast(coalesce(value.string_value,cast(value.int_value as string)) as STRING)
+             FROM UNNEST(${event_params})
+             WHERE key = 'module_name');;
+  }
+
+  dimension: module_tracking {
+    type: string
+    sql: (SELECT cast(coalesce(value.string_value,cast(value.int_value as string)) as STRING)
+             FROM UNNEST(${event_params})
+             WHERE key = 'module_tracking');;
+  }
+
+  dimension: multivariant_experiments {
+    type: string
+    sql: (SELECT cast(coalesce(value.string_value,cast(value.int_value as string)) as STRING)
+             FROM UNNEST(${event_params})
+             WHERE key = 'multivariant_experiments');;
+  }
+
+  dimension: openweb_enabled {
+    type: string
+    sql: (SELECT cast(coalesce(value.string_value,cast(value.int_value as string)) as STRING)
+             FROM UNNEST(${event_params})
+             WHERE key = 'openweb_enabled');;
+  }
+
+  dimension: openweb_module_type {
+    type: string
+    sql: (SELECT cast(coalesce(value.string_value,cast(value.int_value as string)) as STRING)
+             FROM UNNEST(${event_params})
+             WHERE key = 'openweb_module_type');;
+  }
+
+  dimension: page_url {
+    type: string
+    sql: (SELECT cast(coalesce(value.string_value,cast(value.int_value as string)) as STRING)
+             FROM UNNEST(${event_params})
+             WHERE key = 'page_url');;
+  }
+
+  dimension: paywall_variant {
+    type: string
+    sql: (SELECT cast(coalesce(value.string_value,cast(value.int_value as string)) as STRING)
+             FROM UNNEST(${event_params})
+             WHERE key = 'paywall_variant');;
+  }
+
+  dimension: poll_id {
+    type: string
+    sql: (SELECT cast(coalesce(value.string_value,cast(value.int_value as string)) as STRING)
+             FROM UNNEST(${event_params})
+             WHERE key = 'poll_id');;
+  }
+
+  dimension: poll_name {
+    type: string
+    sql: (SELECT cast(coalesce(value.string_value,cast(value.int_value as string)) as STRING)
+             FROM UNNEST(${event_params})
+             WHERE key = 'poll_name');;
+  }
+
+  dimension: product_type {
+    type: string
+    sql: (SELECT cast(coalesce(value.string_value,cast(value.int_value as string)) as STRING)
+             FROM UNNEST(${event_params})
+             WHERE key = 'product_type');;
+  }
+
+  dimension: push_notification_campaign_id {
+    type: string
+    sql: (SELECT cast(coalesce(value.string_value,cast(value.int_value as string)) as STRING)
+             FROM UNNEST(${event_params})
+             WHERE key = 'push_notification_campaign_id');;
+  }
+
+  dimension: push_notification_id {
+    type: string
+    sql: (SELECT cast(coalesce(value.string_value,cast(value.int_value as string)) as STRING)
+             FROM UNNEST(${event_params})
+             WHERE key = 'push_notification_id');;
+  }
+
+  dimension: referrer {
+    type: string
+    sql: (SELECT cast(coalesce(value.string_value,cast(value.int_value as string)) as STRING)
+             FROM UNNEST(${event_params})
+             WHERE key = 'referrer');;
+  }
+
+  dimension: referrer_group {
+    type: string
+    sql: (SELECT cast(coalesce(value.string_value,cast(value.int_value as string)) as STRING)
+             FROM UNNEST(${event_params})
+             WHERE key = 'referrer_group');;
+  }
+
+  dimension: referring_channel {
+    type: string
+    sql: (SELECT cast(coalesce(value.string_value,cast(value.int_value as string)) as STRING)
+             FROM UNNEST(${event_params})
+             WHERE key = 'referring_channel');;
+  }
+
+  dimension: referring_module {
+    type: string
+    sql: (SELECT cast(coalesce(value.string_value,cast(value.int_value as string)) as STRING)
+             FROM UNNEST(${event_params})
+             WHERE key = 'referring_module');;
+  }
+
+  dimension: storefront_variant {
+    type: string
+    sql: (SELECT cast(coalesce(value.string_value,cast(value.int_value as string)) as STRING)
+             FROM UNNEST(${event_params})
+             WHERE key = 'storefront_variant');;
+  }
+
+  dimension: subscription_entitlements {
+    type: string
+    sql: (SELECT cast(coalesce(value.string_value,cast(value.int_value as string)) as STRING)
+             FROM UNNEST(${event_params})
+             WHERE key = 'subscription_entitlements');;
+  }
+
+  dimension: url_subchannel_level_1 {
+    type: string
+    sql: (SELECT cast(coalesce(value.string_value,cast(value.int_value as string)) as STRING)
+             FROM UNNEST(${event_params})
+             WHERE key = 'url_subchannel_level_1');;
+  }
+
+  dimension: user_login_details {
+    type: string
+    sql: (SELECT cast(coalesce(value.string_value,cast(value.int_value as string)) as STRING)
+             FROM UNNEST(${event_params})
+             WHERE key = 'user_login_details');;
+  }
+
+  dimension: user_type {
+    type: string
+    sql: (SELECT cast(coalesce(value.string_value,cast(value.int_value as string)) as STRING)
+             FROM UNNEST(${event_params})
+             WHERE key = 'user_type');;
+  }
+
+  dimension: video_headline {
+    type: string
+    sql: (SELECT cast(coalesce(value.string_value,cast(value.int_value as string)) as STRING)
+             FROM UNNEST(${event_params})
+             WHERE key = 'video_headline');;
+  }
+
  #not modified
 
   dimension: collected_traffic_source__dclid {
