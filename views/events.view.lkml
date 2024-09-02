@@ -1,6 +1,6 @@
 # Un-hide and use this explore, or copy the joins into another explore, to get all the fully nested relationships from this view
 view: events {
-  sql_table_name: `mol-and-metro-ga.analytics_436258270.events_20240801`  ;;
+  sql_table_name: `mol-and-metro-ga.analytics_436258270.events_*`  ;;
 
   dimension_group: event {
     type: time
