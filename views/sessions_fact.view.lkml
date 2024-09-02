@@ -4,6 +4,7 @@ view: sessions_fact {
     # increment_key: "event_date" --- warning check it out
     increment_offset: 1
     sql: select
+          (select coalesce (cast(value.string_value as INT64),value.int_value) from UNNEST(sl.event_params) where key = "ga_session_id") as ga_session_id
             sl.user_pseudo_id||(select coalesce (cast(value.string_value as INT64),value.int_value) from UNNEST(sl.event_params) where key = "ga_session_id") as sl_key
             ,  COUNT(sl.event_timestamp) session_event_count
             ,  SUM(case when sl.event_name = 'page_view' then 1
@@ -19,7 +20,7 @@ view: sessions_fact {
                   , (MAX(sl.event_timestamp) - MIN(sl.event_timestamp))/(60 * 1000 * 1000) AS session_length_minutes
                     from `mol-and-metro-ga.analytics_436258270.events_*` AS sl
                   WHERE {% incrementcondition %} database_table_name.database_time_column {% endincrementcondition %}
-        group by 1 ;;
+        group by 1,2 ;;
   }
 
   measure: count {

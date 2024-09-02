@@ -1,5 +1,6 @@
 view: events_incremental_pdt {
   derived_table: {
+    datagroup_trigger: ga4_metro_from_scratch_default_datagroup
     increment_key: "event_date"
     increment_offset: 1 #option to reprocess
     explore_source: events {
