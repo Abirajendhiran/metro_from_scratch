@@ -12,9 +12,9 @@ persist_with: ga4_metro_from_scratch_default_datagroup
 
 explore: events_incremental_pdt {
   persist_with: ga4_metro_from_scratch_default_datagroup
-  always_filter: {
-    filters: [events_incremental_pdt.event_date: "7 days"]
-  }
+  #always_filter: {
+  #  filters: [events_incremental_pdt.event_date: "7 days"]
+  #}
   sql_always_where: ${event_name} <> 'session_start';;
   join: sessions_fact {
     relationship: many_to_one
@@ -23,7 +23,7 @@ explore: events_incremental_pdt {
 }
 
 explore: events {
-  always_filter: {
-    filters: [events.event_date: "7 days"]
-  }
+  #always_filter: {
+  #  filters: [events.event_date: "7 days"]
+  #}
 }
