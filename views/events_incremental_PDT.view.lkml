@@ -73,10 +73,6 @@ view: events_incremental_pdt {
       column: total_page_views {}
       column: total_video_views {}
       column: total_article_views {}
-      filters: {
-        field: events.event_date
-        value: "7 days"
-      }
     }
   }
   dimension: article_id {
