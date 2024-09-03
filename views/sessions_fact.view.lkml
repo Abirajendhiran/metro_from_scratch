@@ -85,6 +85,12 @@ view: sessions_fact {
     full_suggestions: yes
   }
 
+  measure: sessions {
+    label: "Visits/sessions"
+    type: count_distinct
+    sql: ${TABLE}.sl_key ;;
+  }
+
   set: detail {
     fields: [
       ga_session_id,
