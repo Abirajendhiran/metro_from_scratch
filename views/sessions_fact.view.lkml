@@ -4,7 +4,7 @@ view: sessions_fact {
     # increment_key: "event_date" --- warning check it out
     increment_offset: 1
     sql: select
-          (select coalesce (cast(value.string_value as INT64),value.int_value) from UNNEST(sl.event_params) where key = "ga_session_id") as ga_session_id
+          (select coalesce (cast(value.string_value as INT64),value.int_value) from UNNEST(sl.event_params) where key = "ga_session_id") as ga_session_id,
             sl.user_pseudo_id||(select coalesce (cast(value.string_value as INT64),value.int_value) from UNNEST(sl.event_params) where key = "ga_session_id") as sl_key
             ,  COUNT(sl.event_timestamp) session_event_count
             ,  SUM(case when sl.event_name = 'page_view' then 1
