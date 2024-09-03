@@ -102,6 +102,21 @@ view: events {
           WHERE key = 'ga_session_id');;
   }
 
+  dimension: user_pseudo_id {
+    type: string
+    sql: ${TABLE}.user_pseudo_id ;;
+  }
+
+  dimension: unique_session_id {
+    type: string
+    sql: (SELECT ${ga_session_id}||${user_pseudo_id} ) ;;
+  }
+
+  measure: visits {
+    type:  count_distinct
+    sql: ${unique_session_id} ;;
+  }
+
   # Custom dimension
 
   dimension: article_published_date {
@@ -645,10 +660,7 @@ view: events {
     hidden: yes
     sql: ${TABLE}.user_properties ;;
   }
-  dimension: user_pseudo_id {
-    type: string
-    sql: ${TABLE}.user_pseudo_id ;;
-  }
+
   measure: count {
     type: count
     drill_fields: [detail*]
