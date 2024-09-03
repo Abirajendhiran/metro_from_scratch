@@ -86,6 +86,8 @@ view: sessions_fact {
   }
 
   measure: sessions {
+    view_label: "Behavior"
+    group_label: "Page Filters"
     label: "Visits/sessions"
     type: count_distinct
     sql: ${TABLE}.sl_key ;;
