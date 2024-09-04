@@ -20,7 +20,8 @@ view: sessions_fact {
                   , (MAX(sl.event_timestamp) - MIN(sl.event_timestamp))/(60 * 1000 * 1000) AS session_length_minutes
                   , TIMESTAMP_DIFF(
                             TIMESTAMP_MICROS(LEAD(sl.event_timestamp) OVER (
-                                            PARTITION BY sl.unique_session_id , case when sl.event_name = 'page_view' then true else false end
+                                            PARTITION BY sl.user_pseudo_id||(select coalesce (cast(value.string_value as INT64),value.int_value) from UNNEST(sl.event_params) where key = "ga_session_id") ,
+                                              case when sl.event_name = 'page_view' then true else false end
                                             ORDER BY sl.event_timestamp
                                             -- ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
                                     )
