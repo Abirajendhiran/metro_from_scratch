@@ -18,7 +18,7 @@ view: sessions_fact {
                   , MAX(TIMESTAMP_MICROS(sl.event_timestamp)) as session_end
                   , MIN(TIMESTAMP_MICROS(sl.event_timestamp)) as session_start
                   , (MAX(sl.event_timestamp) - MIN(sl.event_timestamp))/(60 * 1000 * 1000) AS session_length_minutes
-                  , TIMESTAMP_DIFF(
+                  , SUM(TIMESTAMP_DIFF(
                             TIMESTAMP_MICROS(LEAD(sl.event_timestamp) OVER (
                                             PARTITION BY sl.user_pseudo_id||(select coalesce (cast(value.string_value as INT64),value.int_value) from UNNEST(sl.event_params) where key = "ga_session_id") ,
                                               case when sl.event_name = 'page_view' then true else false end
@@ -29,7 +29,7 @@ view: sessions_fact {
 
                             TIMESTAMP_MICROS(sl.event_timestamp),
                             SECOND
-                    ) AS seconds_between_page_views
+                    )) AS time_spent_on_page
                     from `mol-and-metro-ga.analytics_436258270.events_*` AS sl
                   WHERE {% incrementcondition %} database_table_name.database_time_column {% endincrementcondition %}
         group by 1,2 ;;
