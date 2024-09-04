@@ -7,19 +7,6 @@ view: events_incremental_pdt {
       column: article_id {}
       column: article_view_flag {}
       column: channel {}
-      column: collected_traffic_source__dclid {}
-      column: collected_traffic_source__gclid {}
-      column: collected_traffic_source__manual_campaign_id {}
-      column: collected_traffic_source__manual_campaign_name {}
-      column: collected_traffic_source__manual_content {}
-      column: collected_traffic_source__manual_creative_format {}
-      column: collected_traffic_source__manual_marketing_tactic {}
-      column: collected_traffic_source__manual_medium {}
-      column: collected_traffic_source__manual_source {}
-      column: collected_traffic_source__manual_source_platform {}
-      column: collected_traffic_source__manual_term {}
-      column: collected_traffic_source__srsltid {}
-      column: device__advertising_id {}
       column: device__browser {}
       column: device__browser_version {}
       column: device__category {}
@@ -37,7 +24,6 @@ view: events_incremental_pdt {
       column: event_name {}
       column: event_previous_timestamp {}
       column: event_server_timestamp_offset {}
-      column: event_value_in_usd {}
       column: event_timestamp {}
       column: ga_session_id {}
       column: geo__city {}
@@ -46,21 +32,7 @@ view: events_incremental_pdt {
       column: geo__metro {}
       column: geo__sub_continent {}
       column: is_active_user {}
-      column: session_traffic_source_last_click__google_ads_campaign__account_name {}
-      column: session_traffic_source_last_click__google_ads_campaign__campaign_name {}
-      column: session_traffic_source_last_click__google_ads_campaign__customer_id {}
-      column: session_traffic_source_last_click__google_ads_campaign__ad_group_name {}
-      column: session_traffic_source_last_click__google_ads_campaign__campaign_id {}
-      column: session_traffic_source_last_click__manual_campaign__campaign_id {}
-      column: session_traffic_source_last_click__manual_campaign__content {}
-      column: session_traffic_source_last_click__manual_campaign__creative_format {}
-      column: session_traffic_source_last_click__manual_campaign__medium {}
-      column: session_traffic_source_last_click__manual_campaign__source {}
-      column: session_traffic_source_last_click__manual_campaign__campaign_name {}
-      column: session_traffic_source_last_click__manual_campaign__marketing_tactic {}
-      column: session_traffic_source_last_click__manual_campaign__term {}
       column: stream_id {}
-      column: session_traffic_source_last_click__manual_campaign__source_platform {}
       column: traffic_source__name {}
       column: traffic_source__source {}
       column: traffic_source__medium {}

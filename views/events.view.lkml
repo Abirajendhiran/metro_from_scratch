@@ -338,84 +338,6 @@ view: events {
 
  #not modified
 
-  dimension: collected_traffic_source__dclid {
-    type: string
-    sql: ${TABLE}.collected_traffic_source.dclid ;;
-    group_label: "Collected Traffic Source"
-    group_item_label: "Dclid"
-  }
-  dimension: collected_traffic_source__gclid {
-    type: string
-    sql: ${TABLE}.collected_traffic_source.gclid ;;
-    group_label: "Collected Traffic Source"
-    group_item_label: "Gclid"
-  }
-  dimension: collected_traffic_source__manual_campaign_id {
-    type: string
-    sql: ${TABLE}.collected_traffic_source.manual_campaign_id ;;
-    group_label: "Collected Traffic Source"
-    group_item_label: "Manual Campaign ID"
-  }
-  dimension: collected_traffic_source__manual_campaign_name {
-    type: string
-    sql: ${TABLE}.collected_traffic_source.manual_campaign_name ;;
-    group_label: "Collected Traffic Source"
-    group_item_label: "Manual Campaign Name"
-  }
-  dimension: collected_traffic_source__manual_content {
-    type: string
-    sql: ${TABLE}.collected_traffic_source.manual_content ;;
-    group_label: "Collected Traffic Source"
-    group_item_label: "Manual Content"
-  }
-  dimension: collected_traffic_source__manual_creative_format {
-    type: string
-    sql: ${TABLE}.collected_traffic_source.manual_creative_format ;;
-    group_label: "Collected Traffic Source"
-    group_item_label: "Manual Creative Format"
-  }
-  dimension: collected_traffic_source__manual_marketing_tactic {
-    type: string
-    sql: ${TABLE}.collected_traffic_source.manual_marketing_tactic ;;
-    group_label: "Collected Traffic Source"
-    group_item_label: "Manual Marketing Tactic"
-  }
-  dimension: collected_traffic_source__manual_medium {
-    type: string
-    sql: ${TABLE}.collected_traffic_source.manual_medium ;;
-    group_label: "Collected Traffic Source"
-    group_item_label: "Manual Medium"
-  }
-  dimension: collected_traffic_source__manual_source {
-    type: string
-    sql: ${TABLE}.collected_traffic_source.manual_source ;;
-    group_label: "Collected Traffic Source"
-    group_item_label: "Manual Source"
-  }
-  dimension: collected_traffic_source__manual_source_platform {
-    type: string
-    sql: ${TABLE}.collected_traffic_source.manual_source_platform ;;
-    group_label: "Collected Traffic Source"
-    group_item_label: "Manual Source Platform"
-  }
-  dimension: collected_traffic_source__manual_term {
-    type: string
-    sql: ${TABLE}.collected_traffic_source.manual_term ;;
-    group_label: "Collected Traffic Source"
-    group_item_label: "Manual Term"
-  }
-  dimension: collected_traffic_source__srsltid {
-    type: string
-    sql: ${TABLE}.collected_traffic_source.srsltid ;;
-    group_label: "Collected Traffic Source"
-    group_item_label: "Srsltid"
-  }
-  dimension: device__advertising_id {
-    type: string
-    sql: ${TABLE}.device.advertising_id ;;
-    group_label: "Device"
-    group_item_label: "Advertising ID"
-  }
   dimension: device__browser {
     type: string
     sql: ${TABLE}.device.browser ;;
@@ -446,10 +368,7 @@ view: events {
     group_label: "Device"
     group_item_label: "Operating System Version"
   }
-  #dimension: event_date {
-  #  type: string
-  #  sql: ${TABLE}.event_date ;;
-  #}
+
   dimension: event_dimensions__hostname {
     type: string
     sql: ${TABLE}.event_dimensions.hostname ;;
@@ -476,10 +395,7 @@ view: events {
     type: number
     sql: ${TABLE}.event_timestamp ;;
   }
-  dimension: event_value_in_usd {
-    type: number
-    sql: ${TABLE}.event_value_in_usd ;;
-  }
+
   dimension: geo__city {
     type: string
     sql: ${TABLE}.geo.city ;;
@@ -524,96 +440,6 @@ view: events {
     type: string
     sql: ${TABLE}.platform ;;
   }
-  dimension: session_traffic_source_last_click__google_ads_campaign__account_name {
-    type: string
-    sql: ${TABLE}.session_traffic_source_last_click.google_ads_campaign.account_name ;;
-    group_label: "Session Traffic Source Last Click Google Ads Campaign"
-    group_item_label: "Account Name"
-  }
-  dimension: session_traffic_source_last_click__google_ads_campaign__ad_group_id {
-    type: string
-    sql: ${TABLE}.session_traffic_source_last_click.google_ads_campaign.ad_group_id ;;
-    group_label: "Session Traffic Source Last Click Google Ads Campaign"
-    group_item_label: "Ad Group ID"
-  }
-  dimension: session_traffic_source_last_click__google_ads_campaign__ad_group_name {
-    type: string
-    sql: ${TABLE}.session_traffic_source_last_click.google_ads_campaign.ad_group_name ;;
-    group_label: "Session Traffic Source Last Click Google Ads Campaign"
-    group_item_label: "Ad Group Name"
-  }
-  dimension: session_traffic_source_last_click__google_ads_campaign__campaign_id {
-    type: string
-    sql: ${TABLE}.session_traffic_source_last_click.google_ads_campaign.campaign_id ;;
-    group_label: "Session Traffic Source Last Click Google Ads Campaign"
-    group_item_label: "Campaign ID"
-  }
-  dimension: session_traffic_source_last_click__google_ads_campaign__campaign_name {
-    type: string
-    sql: ${TABLE}.session_traffic_source_last_click.google_ads_campaign.campaign_name ;;
-    group_label: "Session Traffic Source Last Click Google Ads Campaign"
-    group_item_label: "Campaign Name"
-  }
-  dimension: session_traffic_source_last_click__google_ads_campaign__customer_id {
-    type: string
-    sql: ${TABLE}.session_traffic_source_last_click.google_ads_campaign.customer_id ;;
-    group_label: "Session Traffic Source Last Click Google Ads Campaign"
-    group_item_label: "Customer ID"
-  }
-  dimension: session_traffic_source_last_click__manual_campaign__campaign_id {
-    type: string
-    sql: ${TABLE}.session_traffic_source_last_click.manual_campaign.campaign_id ;;
-    group_label: "Session Traffic Source Last Click Manual Campaign"
-    group_item_label: "Campaign ID"
-  }
-  dimension: session_traffic_source_last_click__manual_campaign__campaign_name {
-    type: string
-    sql: ${TABLE}.session_traffic_source_last_click.manual_campaign.campaign_name ;;
-    group_label: "Session Traffic Source Last Click Manual Campaign"
-    group_item_label: "Campaign Name"
-  }
-  dimension: session_traffic_source_last_click__manual_campaign__content {
-    type: string
-    sql: ${TABLE}.session_traffic_source_last_click.manual_campaign.content ;;
-    group_label: "Session Traffic Source Last Click Manual Campaign"
-    group_item_label: "Content"
-  }
-  dimension: session_traffic_source_last_click__manual_campaign__creative_format {
-    type: string
-    sql: ${TABLE}.session_traffic_source_last_click.manual_campaign.creative_format ;;
-    group_label: "Session Traffic Source Last Click Manual Campaign"
-    group_item_label: "Creative Format"
-  }
-  dimension: session_traffic_source_last_click__manual_campaign__marketing_tactic {
-    type: string
-    sql: ${TABLE}.session_traffic_source_last_click.manual_campaign.marketing_tactic ;;
-    group_label: "Session Traffic Source Last Click Manual Campaign"
-    group_item_label: "Marketing Tactic"
-  }
-  dimension: session_traffic_source_last_click__manual_campaign__medium {
-    type: string
-    sql: ${TABLE}.session_traffic_source_last_click.manual_campaign.medium ;;
-    group_label: "Session Traffic Source Last Click Manual Campaign"
-    group_item_label: "Medium"
-  }
-  dimension: session_traffic_source_last_click__manual_campaign__source {
-    type: string
-    sql: ${TABLE}.session_traffic_source_last_click.manual_campaign.source ;;
-    group_label: "Session Traffic Source Last Click Manual Campaign"
-    group_item_label: "Source"
-  }
-  dimension: session_traffic_source_last_click__manual_campaign__source_platform {
-    type: string
-    sql: ${TABLE}.session_traffic_source_last_click.manual_campaign.source_platform ;;
-    group_label: "Session Traffic Source Last Click Manual Campaign"
-    group_item_label: "Source Platform"
-  }
-  dimension: session_traffic_source_last_click__manual_campaign__term {
-    type: string
-    sql: ${TABLE}.session_traffic_source_last_click.manual_campaign.term ;;
-    group_label: "Session Traffic Source Last Click Manual Campaign"
-    group_item_label: "Term"
-  }
   dimension: stream_id {
     type: string
     sql: ${TABLE}.stream_id ;;
@@ -644,18 +470,7 @@ view: events {
     type: string
     sql: ${TABLE}.user_id ;;
   }
-  dimension: user_ltv__currency {
-    type: string
-    sql: ${TABLE}.user_ltv.currency ;;
-    group_label: "User Ltv"
-    group_item_label: "Currency"
-  }
-  dimension: user_ltv__revenue {
-    type: number
-    sql: ${TABLE}.user_ltv.revenue ;;
-    group_label: "User Ltv"
-    group_item_label: "Revenue"
-  }
+
   dimension: user_properties {
     hidden: yes
     sql: ${TABLE}.user_properties ;;
@@ -672,11 +487,6 @@ view: events {
   event_name,
   traffic_source__name,
   event_dimensions__hostname,
-  collected_traffic_source__manual_campaign_name,
-  session_traffic_source_last_click__manual_campaign__campaign_name,
-  session_traffic_source_last_click__google_ads_campaign__account_name,
-  session_traffic_source_last_click__google_ads_campaign__campaign_name,
-  session_traffic_source_last_click__google_ads_campaign__ad_group_name
   ]
   }
 
