@@ -331,10 +331,10 @@ view: events {
 
   dimension: time_spent_on_page_flag{
     type: number
-    sql: (SELECT TIMESTAMP_DIFF( TIMESTAMP_MICROS(LEAD(event_timestamp) OVER
-              (PARTITION BY user_pseudo_id||(select coalesce (cast(value.string_value as INT64),value.int_value) from UNNEST(event_params) where key = "ga_session_id"),
-                  CASE WHEN event_name = 'page_view' THEN TRUE ELSE FALSE END ORDER BY event_timestamp ) )
-            ,TIMESTAMP_MICROS(event_timestamp), SECOND )) ;;
+    sql: (TIMESTAMP_DIFF( TIMESTAMP_MICROS(LEAD(${event_timestamp}) OVER
+              (PARTITION BY ${user_pseudo_id}||(select coalesce (cast(value.string_value as INT64),value.int_value) from UNNEST(${event_params}) where key = "ga_session_id"),
+                  CASE WHEN event_name = 'page_view' THEN TRUE ELSE FALSE END ORDER BY ${event_timestamp} ) )
+            ,TIMESTAMP_MICROS(${event_timestamp}), SECOND )) ;;
   }
 
   # Custom Metric
