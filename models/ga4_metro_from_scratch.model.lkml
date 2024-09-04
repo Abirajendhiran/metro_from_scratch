@@ -38,4 +38,8 @@ explore: events_incremental_pdt {
     relationship: many_to_one
     sql_on: ${session_list_with_event_history.ga_session_id} = ${events_incremental_pdt.ga_session_id} ;;
   }
+  join: sessions_fact {
+    relationship: many_to_one
+    sql_on: ${sessions_fact.ga_session_id}=${events_incremental_pdt.ga_session_id} ;;
+  }
 }
