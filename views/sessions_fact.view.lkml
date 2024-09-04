@@ -84,6 +84,21 @@ view: sessions_fact {
     sql: ${TABLE}.session_length_minutes ;;
   }
 
+  dimension: seconds_between_page_views {
+    type: number
+    sql: ${TABLE}.seconds_between_page_views ;;
+  }
+
+  measure: time_spent_on_page {
+    type: sum
+    sql: ${seconds_between_page_views} ;;
+  }
+
+  measure: average_time_spent_on_page {
+    type: average
+    sql: ${seconds_between_page_views}/${session_page_view_count} ;;
+  }
+
   #additions for dimensions and metrics
 
   dimension: is_bounce {
