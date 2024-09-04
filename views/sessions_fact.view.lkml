@@ -23,7 +23,6 @@ view: sessions_fact {
                                             PARTITION BY sl.user_pseudo_id||(select coalesce (cast(value.string_value as INT64),value.int_value) from UNNEST(sl.event_params) where key = "ga_session_id") ,
                                               case when sl.event_name = 'page_view' then true else false end
                                             ORDER BY sl.event_timestamp
-                                            -- ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
                                     )
                             ),
 
@@ -90,21 +89,15 @@ view: sessions_fact {
     sql: ${TABLE}.seconds_between_page_views ;;
   }
 
-  measure: time_spent_on_page {
-    type: sum
-    sql: ${seconds_between_page_views} ;;
-  }
-
-  measure: average_time_spent_on_page {
-    type: average
-    sql: ${seconds_between_page_views}/${session_page_view_count} ;;
+  dimension: time_spent_on_page {
+    type: number
+    sql: ${TABLE}.time_spent_on_page ;;
   }
 
   #additions for dimensions and metrics
 
   dimension: is_bounce {
     view_label: "Behavior"
-    group_label: "Page Filters"
     label: "Is Bounce?"
     description: "If this hit was the last pageview or screenview hit of a session, this is set to true."
     type: yesno
@@ -114,10 +107,16 @@ view: sessions_fact {
 
   measure: sessions {
     view_label: "Behavior"
-    group_label: "Page Filters"
     label: "Visits/sessions"
     type: count_distinct
     sql: ${TABLE}.sl_key ;;
+  }
+
+  measure: average_time_spent_on_page {
+    view_label: "Behavior"
+    label: "Avg Time Spent on Page"
+    type: number
+    sql: ${time_spent_on_page}/${session_page_view_count} ;;
   }
 
   set: detail {
