@@ -6,7 +6,7 @@
 ############################
 view: session_list_with_event_history {
   derived_table: {
-    datagroup_trigger: ga4_main_datagroup
+    datagroup_trigger: ga4_metro_from_scratch_default_datagroup
     partition_keys: ["session_date"]
     cluster_keys: ["sl_key","user_id","session_date"]
     increment_key: "session_date"
