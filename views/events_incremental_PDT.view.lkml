@@ -15,27 +15,15 @@ view: events_incremental_pdt {
       column: event_date {}
       column: event_day_of_week {}
       column: _event_hour {}
-      column: _event_minute {}
-      column: event_month {}
-      column: _event_time {}
-      column: event_week {}
-      column: event_year {}
-      column: event_dimensions__hostname {}
       column: event_name {}
       column: event_previous_timestamp {}
       column: event_server_timestamp_offset {}
       column: event_timestamp {}
       column: ga_session_id {}
       column: geo__city {}
-      column: geo__continent {}
       column: geo__country {}
-      column: geo__metro {}
-      column: geo__sub_continent {}
       column: is_active_user {}
       column: stream_id {}
-      column: traffic_source__name {}
-      column: traffic_source__source {}
-      column: traffic_source__medium {}
       column: user_first_touch_timestamp {}
       column: user_id {}
       column: user_pseudo_id {}
@@ -55,45 +43,6 @@ view: events_incremental_pdt {
     type: number
   }
   dimension: channel {
-    description: ""
-  }
-  dimension: collected_traffic_source__dclid {
-    description: ""
-  }
-  dimension: collected_traffic_source__gclid {
-    description: ""
-  }
-  dimension: collected_traffic_source__manual_campaign_id {
-    description: ""
-  }
-  dimension: collected_traffic_source__manual_campaign_name {
-    description: ""
-  }
-  dimension: collected_traffic_source__manual_content {
-    description: ""
-  }
-  dimension: collected_traffic_source__manual_creative_format {
-    description: ""
-  }
-  dimension: collected_traffic_source__manual_marketing_tactic {
-    description: ""
-  }
-  dimension: collected_traffic_source__manual_medium {
-    description: ""
-  }
-  dimension: collected_traffic_source__manual_source {
-    description: ""
-  }
-  dimension: collected_traffic_source__manual_source_platform {
-    description: ""
-  }
-  dimension: collected_traffic_source__manual_term {
-    description: ""
-  }
-  dimension: collected_traffic_source__srsltid {
-    description: ""
-  }
-  dimension: device__advertising_id {
     description: ""
   }
   dimension: device__browser {
@@ -119,20 +68,6 @@ view: events_incremental_pdt {
     description: ""
     type: date_day_of_week
   }
-  dimension: _event_hour {
-    label: "Events Event Hour"
-    description: ""
-    type: date_hour
-  }
-  dimension: _event_minute {
-    label: "Events Event Minute"
-    description: ""
-    type: date_minute
-  }
-  dimension: event_month {
-    description: ""
-    type: date_month
-  }
   dimension: _event_time {
     label: "Events Event Time"
     description: ""
@@ -156,14 +91,6 @@ view: events_incremental_pdt {
     description: ""
     type: number
   }
-  dimension: event_server_timestamp_offset {
-    description: ""
-    type: number
-  }
-  dimension: event_value_in_usd {
-    description: ""
-    type: number
-  }
   dimension: event_timestamp {
     description: ""
     type: number
@@ -175,16 +102,7 @@ view: events_incremental_pdt {
   dimension: geo__city {
     description: ""
   }
-  dimension: geo__continent {
-    description: ""
-  }
   dimension: geo__country {
-    description: ""
-  }
-  dimension: geo__metro {
-    description: ""
-  }
-  dimension: geo__sub_continent {
     description: ""
   }
   dimension: is_active_user {
@@ -192,58 +110,7 @@ view: events_incremental_pdt {
     description: ""
     type: yesno
   }
-  dimension: session_traffic_source_last_click__google_ads_campaign__account_name {
-    description: ""
-  }
-  dimension: session_traffic_source_last_click__google_ads_campaign__campaign_name {
-    description: ""
-  }
-  dimension: session_traffic_source_last_click__google_ads_campaign__customer_id {
-    description: ""
-  }
-  dimension: session_traffic_source_last_click__google_ads_campaign__ad_group_name {
-    description: ""
-  }
-  dimension: session_traffic_source_last_click__google_ads_campaign__campaign_id {
-    description: ""
-  }
-  dimension: session_traffic_source_last_click__manual_campaign__campaign_id {
-    description: ""
-  }
-  dimension: session_traffic_source_last_click__manual_campaign__content {
-    description: ""
-  }
-  dimension: session_traffic_source_last_click__manual_campaign__creative_format {
-    description: ""
-  }
-  dimension: session_traffic_source_last_click__manual_campaign__medium {
-    description: ""
-  }
-  dimension: session_traffic_source_last_click__manual_campaign__source {
-    description: ""
-  }
-  dimension: session_traffic_source_last_click__manual_campaign__campaign_name {
-    description: ""
-  }
-  dimension: session_traffic_source_last_click__manual_campaign__marketing_tactic {
-    description: ""
-  }
-  dimension: session_traffic_source_last_click__manual_campaign__term {
-    description: ""
-  }
   dimension: stream_id {
-    description: ""
-  }
-  dimension: session_traffic_source_last_click__manual_campaign__source_platform {
-    description: ""
-  }
-  dimension: traffic_source__name {
-    description: ""
-  }
-  dimension: traffic_source__source {
-    description: ""
-  }
-  dimension: traffic_source__medium {
     description: ""
   }
   dimension: user_first_touch_timestamp {
@@ -260,10 +127,6 @@ view: events_incremental_pdt {
     description: ""
   }
   dimension: video_view_flag {
-    description: ""
-    type: number
-  }
-  dimension: count {
     description: ""
     type: number
   }
