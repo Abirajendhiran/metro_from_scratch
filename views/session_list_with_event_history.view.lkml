@@ -8,7 +8,7 @@ view: session_list_with_event_history {
   derived_table: {
     datagroup_trigger: ga4_metro_from_scratch_default_datagroup
     partition_keys: ["session_date"]
-    cluster_keys: ["sl_key","user_id","session_date"]
+    cluster_keys: ["unique_session_id","user_pseudo_id","session_date"]
     increment_key: "session_date"
     increment_offset: 0
     sql:-- obtains a list of sessions, uniquely identified by the table date, ga_session_id event parameter, ga_session_number event parameter, and the user_pseudo_id.
