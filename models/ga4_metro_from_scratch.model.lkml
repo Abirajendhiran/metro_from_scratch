@@ -26,6 +26,11 @@ explore: events {
   #always_filter: {
   #  filters: [events.event_date: "7 days"]
   #}
+  sql_always_where: ${event_name} <> 'session_start';;
+  join: session_fact {
+    relationship: many_to_one
+    sql_on: ${session_fact.unique_session_id}=${events.unique_session_id} ;;
+  }
 }
 
 explore: events_incremental_pdt {
